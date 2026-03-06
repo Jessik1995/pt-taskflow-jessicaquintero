@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TaskFlow — pt-taskflow-jessicaquintero
 
-## Getting Started
+Task management app that consumes the [DummyJSON](https://dummyjson.com/docs/todos) Todos API. Built with Next.js, React, TypeScript and TailwindCSS.
 
-First, run the development server:
+## Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). No extra steps required.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copy `.env.example` to `.env.local` and set:
 
-## Learn More
+```env
+NEXT_PUBLIC_API_URL=https://dummyjson.com
+```
 
-To learn more about Next.js, take a look at the following resources:
+See `.env.example` for the list of variables.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `pnpm dev` — development server
+- `pnpm build` — production build (must pass with zero lint errors)
+- `pnpm start` — run production build
+- `pnpm lint` — run ESLint
+- `pnpm format` — run Prettier
 
-## Deploy on Vercel
+## Technical decisions
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### State management
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**useState** is used for all client state (todos list, loading, error, page, filter, add feedback). No global store (e.g. Zustand) was added because:
+
+- State is only needed in one page and in the custom hook.
+- The flow is simple: fetch → display → mutate via API → update local state.
+- Keeping state in a single hook keeps the code easy to follow and test.
+
+### Toggle completed: post-response update
+
+When marking a task completed/pending, the UI is updated **after** the PATCH response succeeds (not optimistically). Reasons:
+
+- The API returns the updated todo; we use that payload to update state, so the UI always matches the server response.
+- If the request fails, we don’t have to roll back or show a mismatch.
+- For this demo, the extra latency is acceptable and keeps the logic straightforward.
+
+### Reusable components
+
+- **TodoItem** — single task row (checkbox, label, delete).
+- **TodoList** — list of `TodoItem`s.
+- **TodoForm** — input + submit for adding a task.
+- **LoadingState** — skeleton placeholder while tasks load.
+- **EmptyState** — message when there are no tasks (or no tasks for the current filter).
+- **Filters** — tabs for All / Completed / Pending (local filter only).
+
+### API and local state
+
+DummyJSON does not persist POST/PATCH/DELETE. All mutations are applied only in local state after a successful response, so the list stays consistent with user actions across pagination and filters.
+
+## Project structure
+
+- `app/page.tsx` — main page; composes hooks and components.
+- `src/hooks/useTodos.ts` — fetching and CRUD logic (no UI).
+- `src/services/todosApi.ts` — API client for DummyJSON todos.
+- `src/types/todo.ts` — TypeScript types for Todo and API responses.
+- `src/components/` — UI components (TodoList, TodoItem, TodoForm, LoadingState, EmptyState, Filters).
+
+ESLint and Prettier are configured; `pnpm build` runs with zero lint errors.
