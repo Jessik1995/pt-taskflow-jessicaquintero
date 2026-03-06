@@ -20,16 +20,18 @@ export default function TodoItem({ todo, onToggle, onDelete, animationDelay = 0 
       )}
       style={{ animationDelay: `${animationDelay}ms` } as React.CSSProperties}
     >
-      <div className="flex items-normal gap-3 flex-1 w-full">
-        <button
-          type="button"
-          onClick={() => onToggle(todo.id, !todo.completed)}
-          aria-pressed={todo.completed}
-          aria-label={
-            todo.completed ? "Marcar como pendiente" : "Marcar como completada"
-          }
+      <button
+        type="button"
+        onClick={() => onToggle(todo.id, !todo.completed)}
+        aria-pressed={todo.completed}
+        aria-label={
+          todo.completed ? "Marcar como pendiente" : "Marcar como completada"
+        }
+        className="flex items-normal gap-3 flex-1 w-full text-left cursor-pointer"
+      >
+        <span
           className={cn(
-            "w-6 h-6 rounded-full border-2 shrink-0 cursor-pointer flex items-center justify-center transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary",
+            "w-6 h-6 rounded-full border-2 shrink-0 flex items-center justify-center transition-colors duration-200",
             todo.completed
               ? "border-primary bg-primary"
               : "border-primary bg-white"
@@ -48,7 +50,7 @@ export default function TodoItem({ todo, onToggle, onDelete, animationDelay = 0 
               <path d="M5 13l4 4L19 7" />
             </svg>
           )}
-        </button>
+        </span>
         <div className="min-w-0 flex-1">
           <p
             className={cn(
@@ -69,7 +71,7 @@ export default function TodoItem({ todo, onToggle, onDelete, animationDelay = 0 
             TAREA
           </p>
         </div>
-      </div>
+      </button>
       <div className="flex items-center gap-3 shrink-0 md:w-auto w-full md:justify-start justify-end">
         <Badge variant={todo.completed ? "completed" : "pending"}>
           {todo.completed ? "Completed" : "Pending"}
