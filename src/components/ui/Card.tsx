@@ -1,10 +1,10 @@
-"use client";
+"use client"
 
-import { cn } from "@/src/lib/utils";
+import { cn } from "@/src/lib/utils"
 
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode;
-  className?: string;
+  children: React.ReactNode
+  className?: string
 }
 
 export function Card({ className, children, ...props }: CardProps) {
@@ -18,5 +18,5 @@ export function Card({ className, children, ...props }: CardProps) {
     >
       {children}
     </div>
-  );
+  )
 }

@@ -7,7 +7,7 @@ import {
   getTodos,
   createTodo,
   updateTodo,
-  deleteTodo
+  deleteTodo,
 } from "../services/todosApi"
 
 export function useTodos() {
@@ -98,6 +98,6 @@ export function useTodos() {
     addTodo,
     toggleTodo,
     removeTodo,
-    addFeedback
+    addFeedback,
   }
 }

@@ -15,25 +15,25 @@ pnpm dev
 
 ## Scripts disponibles
 
-| Comando       | Descripción                                      |
-| ------------- | ------------------------------------------------ |
-| `pnpm dev`    | Servidor de desarrollo                           |
-| `pnpm build`  | Build de producción (debe pasar sin errores lint)|
-| `pnpm start`  | Ejecutar build de producción                     |
-| `pnpm lint`   | Ejecutar ESLint                                  |
-| `pnpm format` | Ejecutar Prettier                                |
+| Comando       | Descripción                                       |
+| ------------- | ------------------------------------------------- |
+| `pnpm dev`    | Servidor de desarrollo                            |
+| `pnpm build`  | Build de producción (debe pasar sin errores lint) |
+| `pnpm start`  | Ejecutar build de producción                      |
+| `pnpm lint`   | Ejecutar ESLint                                   |
+| `pnpm format` | Ejecutar Prettier                                 |
 
 ---
 
 ## Estructura del proyecto
 
-| Ruta / Carpeta              | Descripción                                              |
-| --------------------------- | -------------------------------------------------------- |
-| `app/page.tsx`              | Página principal; compone hooks y componentes            |
-| `src/hooks/useTodos.ts`     | Lógica de fetching y CRUD (sin UI)                       |
-| `src/services/todosApi.ts`  | Cliente API para todos de DummyJSON                      |
-| `src/types/todo.ts`         | Tipos TypeScript para Todo y respuestas de la API         |
-| `src/components/`           | Componentes UI (TodoList, TodoItem, TodoForm, etc.)      |
+| Ruta / Carpeta             | Descripción                                         |
+| -------------------------- | --------------------------------------------------- |
+| `app/page.tsx`             | Página principal; compone hooks y componentes       |
+| `src/hooks/useTodos.ts`    | Lógica de fetching y CRUD (sin UI)                  |
+| `src/services/todosApi.ts` | Cliente API para todos de DummyJSON                 |
+| `src/types/todo.ts`        | Tipos TypeScript para Todo y respuestas de la API   |
+| `src/components/`          | Componentes UI (TodoList, TodoItem, TodoForm, etc.) |
 
 ESLint y Prettier están configurados; `pnpm build` se ejecuta sin errores de lint.
 

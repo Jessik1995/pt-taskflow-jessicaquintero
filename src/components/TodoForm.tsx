@@ -28,9 +28,14 @@ export default function TodoForm({ onCreate }: Props) {
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-      <Button size="sm" type="submit" variant="addTask" disabled={!text.trim()}>
-        Add Task
-      </Button>
+        <Button
+          size="sm"
+          type="submit"
+          variant="addTask"
+          disabled={!text.trim()}
+        >
+          Add Task
+        </Button>
       </div>
     </form>
   )

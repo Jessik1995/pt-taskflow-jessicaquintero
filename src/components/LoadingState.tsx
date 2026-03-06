@@ -2,7 +2,11 @@ import { Card } from "@/src/components/ui/Card"
 
 export default function LoadingState() {
   return (
-    <div className="space-y-3 animate-pulse" aria-busy="true" aria-label="Loading tasks">
+    <div
+      className="space-y-3 animate-pulse"
+      aria-busy="true"
+      aria-label="Loading tasks"
+    >
       {Array.from({ length: 5 }).map((_, i) => (
         <Card key={i} className="flex items-center gap-3 p-4">
           <div className="h-5 w-5 rounded border border-gray-200 bg-gray-100 shrink-0" />

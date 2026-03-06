@@ -8,14 +8,18 @@ interface Props {
 }
 
 const filterLabels: Record<FilterType, string> = {
-  all: 'all',
-  completed: 'completed',
-  pending: 'pending'
+  all: "all",
+  completed: "completed",
+  pending: "pending",
 }
 
 export default function Filters({ filter, onFilterChange }: Props) {
   return (
-    <div className="flex gap-2 mb-5 bg-slate-200/50 p-1.5 rounded-2xl md:w-fit w-full" role="tablist" aria-label="Filter tasks">
+    <div
+      className="flex gap-2 mb-5 bg-slate-200/50 p-1.5 rounded-2xl md:w-fit w-full"
+      role="tablist"
+      aria-label="Filter tasks"
+    >
       {(["all", "completed", "pending"] as const).map((f) => (
         <Button
           key={f}

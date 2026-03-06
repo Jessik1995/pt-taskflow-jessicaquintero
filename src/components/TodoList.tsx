@@ -18,7 +18,6 @@ export default function TodoList({ todos, onToggle, onDelete }: Props) {
           onDelete={onDelete}
         />
       ))}
-
     </div>
   )
 }

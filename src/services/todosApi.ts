@@ -16,13 +16,13 @@ export async function createTodo(todo: string): Promise<Todo> {
   const res = await fetch(`${API}/todos/add`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       todo,
       completed: false,
-      userId: 1
-    })
+      userId: 1,
+    }),
   })
 
   if (!res.ok) {
@@ -32,13 +32,16 @@ export async function createTodo(todo: string): Promise<Todo> {
   return res.json()
 }
 
-export async function updateTodo(id: number, completed: boolean): Promise<Todo> {
+export async function updateTodo(
+  id: number,
+  completed: boolean
+): Promise<Todo> {
   const res = await fetch(`${API}/todos/${id}`, {
     method: "PATCH",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify({ completed })
+    body: JSON.stringify({ completed }),
   })
 
   if (!res.ok) {
@@ -50,7 +53,7 @@ export async function updateTodo(id: number, completed: boolean): Promise<Todo> 
 
 export async function deleteTodo(id: number): Promise<DeleteTodoResponse> {
   const res = await fetch(`${API}/todos/${id}`, {
-    method: "DELETE"
+    method: "DELETE",
   })
 
   if (!res.ok) {
