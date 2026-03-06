@@ -10,12 +10,13 @@ interface Props {
 export default function TodoList({ todos, onToggle, onDelete }: Props) {
   return (
     <div className="space-y-3">
-      {todos.map((todo) => (
+      {todos.map((todo, index) => (
         <TodoItem
           key={todo.id}
           todo={todo}
           onToggle={onToggle}
           onDelete={onDelete}
+          animationDelay={index * 50}
         />
       ))}
     </div>

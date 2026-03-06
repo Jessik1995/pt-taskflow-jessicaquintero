@@ -17,7 +17,7 @@ const variantStyles: Record<ButtonVariant, string> = {
   primary:
     "bg-primary text-white hover:bg-primary-hover transition-colors font-medium",
   secondary:
-    "bg-gray-200 text-gray-700 hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed font-medium",
+    "bg-gray-200 text-gray-700 hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed font-medium transition-transform duration-150 active:scale-95",
   danger: "bg-red-100 hover:bg-red-200 text-red-800 font-medium",
   ghost:
     "bg-gray-100 text-gray-600 hover:bg-gray-200 font-medium transition-colors",

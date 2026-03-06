@@ -6,7 +6,7 @@ interface Props {
 
 export default function EmptyState({ message = "No tasks to show." }: Props) {
   return (
-    <Card className="text-center py-10 text-gray-500" role="status">
+    <Card className="text-center py-10 text-gray-500 animate-fade-in" role="status">
       {message}
     </Card>
   )

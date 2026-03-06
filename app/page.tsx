@@ -36,7 +36,7 @@ export default function Home() {
 
   return (
     <main className="mx-auto p-4 md:p-40 md:py-20 min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-teal-50">
-      <section className="w-full bg-white/60 backdrop-blur-xl border border-white/50 shadow-2xl rounded-3xl overflow-hidden transition-all duration-300 md:p-8 p-4 pb-6">
+      <section className="w-full bg-white/60 backdrop-blur-xl border border-white/50 shadow-2xl rounded-3xl overflow-hidden transition-all duration-300 md:p-8 p-4 pb-6 animate-slide-up">
         <header className="mb-8">
           <div className="flex items-center gap-3 mb-1">
             <div className="bg-gradient-to-tr from-primary to-primary-hover md:p-3 p-2 md:rounded-2xl rounded-md shadow-lg shadow-indigo-200 text-white">
@@ -69,15 +69,17 @@ export default function Home() {
         <TodoForm onCreate={addTodo} />
 
         {addFeedback && (
-          <p
-            role="status"
-            className={cn(
-              "mb-4 text-sm",
-              addFeedback.type === "success" ? "text-green-600" : "text-red-600"
-            )}
-          >
-            {addFeedback.message}
-          </p>
+          <div className="animate-fade-in mb-4">
+            <p
+              role="status"
+              className={cn(
+                "text-sm",
+                addFeedback.type === "success" ? "text-green-600" : "text-red-600"
+              )}
+            >
+              {addFeedback.message}
+            </p>
+          </div>
         )}
 
         <Filters filter={filter} onFilterChange={setFilter} />
@@ -114,7 +116,7 @@ export default function Home() {
               />
             )}
 
-            <div className="flex gap-3 mt-6 items-center justify-center">
+            <div className="flex gap-3 mt-6 items-center justify-center animate-fade-in">
               <Button
                 variant="secondary"
                 onClick={() => setPage((p) => Math.max(0, p - 1))}

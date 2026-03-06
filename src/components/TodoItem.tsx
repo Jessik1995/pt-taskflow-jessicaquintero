@@ -8,15 +8,17 @@ interface Props {
   todo: Todo
   onToggle: (id: number, completed: boolean) => void
   onDelete: (id: number) => void
+  animationDelay?: number
 }
 
-export default function TodoItem({ todo, onToggle, onDelete }: Props) {
+export default function TodoItem({ todo, onToggle, onDelete, animationDelay = 0 }: Props) {
   return (
     <Card
       className={cn(
-        "flex justify-between items-center gap-3 p-4 transition-all duration-300",
+        "flex justify-between items-center gap-3 p-4 transition-all duration-300 animate-slide-up hover:scale-[1.01] hover:shadow-md",
         todo.completed && "opacity-75"
       )}
+      style={{ animationDelay: `${animationDelay}ms` } as React.CSSProperties}
     >
       <div className="flex items-normal gap-3 flex-1 w-full">
         <button
