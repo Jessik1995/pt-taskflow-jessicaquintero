@@ -12,24 +12,58 @@ interface Props {
 
 export default function TodoItem({ todo, onToggle, onDelete }: Props) {
   return (
-    <Card className="flex justify-between items-center gap-3 p-4">
-      <div className="flex items-center gap-3 min-w-0 flex-1">
-        <input
-          type="checkbox"
-          checked={todo.completed}
-          onChange={() => onToggle(todo.id, !todo.completed)}
-          className="w-5 h-5 rounded border-gray-300 text-blue-500 focus:ring-blue-500 shrink-0 cursor-pointer"
-        />
+    <Card
+      className={cn(
+        "flex justify-between items-center gap-3 p-4 transition-all duration-300",
+        todo.completed && "opacity-75"
+      )}
+    >
+      <div className="flex items-center gap-3 flex-1 w-full">
+        <button
+          type="button"
+          onClick={() => onToggle(todo.id, !todo.completed)}
+          aria-pressed={todo.completed}
+          aria-label={todo.completed ? "Marcar como pendiente" : "Marcar como completada"}
+          className={cn(
+            "w-6 h-6 rounded-full border-2 shrink-0 cursor-pointer flex items-center justify-center transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary",
+            todo.completed
+              ? "border-primary bg-primary"
+              : "border-primary bg-white"
+          )}
+        >
+          {todo.completed && (
+            <svg
+              className="w-3.5 h-3.5 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              strokeWidth={2.5}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M5 13l4 4L19 7" />
+            </svg>
+          )}
+        </button>
         <div className="min-w-0 flex-1">
           <p
             className={cn(
-              "font-medium text-gray-800",
-              todo.completed && "line-through text-gray-500"
+              "text-lg font-medium transition-all duration-300",
+              todo.completed
+                ? "line-through text-slate-400 opacity-70"
+                : "text-slate-800"
             )}
           >
             {todo.todo}
           </p>
-          <p className="text-sm text-gray-400 mt-0.5">Task</p>
+          <p
+            className={cn(
+              "text-sm mt-0.5 transition-all duration-300",
+              todo.completed ? "text-gray-400 opacity-70" : "text-gray-500"
+            )}
+          >
+            TAREA
+          </p>
         </div>
       </div>
       <div className="flex items-center gap-3 shrink-0">

@@ -11,8 +11,8 @@ interface BadgeProps {
 }
 
 const variantStyles: Record<BadgeVariant, string> = {
-  completed: "bg-green-400 text-white",
-  pending: "bg-blue-400 text-white",
+  completed: "bg-emerald-50 text-emerald-600 border-emerald-200",
+  pending: "bg-amber-50 text-amber-600 border-amber-200",
   neutral: "bg-gray-200 text-gray-800",
 };
 
@@ -24,7 +24,7 @@ export function Badge({
   return (
     <span
       className={cn(
-        "px-2.5 py-1 rounded-md text-xs font-medium",
+        "px-3 py-1 text-xs font-bold rounded-full border",
         variantStyles[variant],
         className
       )}

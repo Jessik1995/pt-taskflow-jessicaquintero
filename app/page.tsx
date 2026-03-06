@@ -35,12 +35,14 @@ export default function Home() {
   const totalPages = Math.max(1, Math.ceil(total / limit))
 
   return (
-    <main className="mx-auto p-10 md:p-40 min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-teal-50">
+    <main className="mx-auto p-10 md:p-40 md:py-20 min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-teal-50">
       <section className="w-full bg-white/60 backdrop-blur-xl border border-white/50 shadow-2xl rounded-3xl overflow-hidden transition-all duration-300 p-8 pb-6">
       <header className="mb-8">
         <div className="flex items-center gap-3 mb-1">
-          <Image src="/orquestia-logo.jpg" alt="TaskFlow" width={55} height={55} />
-          <h1 className="text-3xl font-bold text-gray-800">TaskFlow</h1>
+          <div className="bg-gradient-to-tr from-primary to-primary-hover p-3 rounded-2xl shadow-lg shadow-indigo-200 text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-list-todo" aria-hidden="true"><rect x="3" y="5" width="6" height="6" rx="1"></rect><path d="m3 17 2 2 4-4"></path><path d="M13 6h8"></path><path d="M13 12h8"></path><path d="M13 18h8"></path></svg>
+          </div>
+          <h1 className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary-hover">TaskFlow</h1>
         </div>
       </header>
 

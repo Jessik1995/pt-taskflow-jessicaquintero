@@ -7,15 +7,11 @@ interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
 }
 
-/**
- * Card container: white background, subtle border and shadow.
- * Matches existing todo item, empty state, and loading skeleton styles.
- */
 export function Card({ className, children, ...props }: CardProps) {
   return (
     <div
       className={cn(
-        "bg-white rounded-lg shadow-sm border border-gray-100",
+        "group flex flex-col md:flex-row items-center justify-between p-4 rounded-2xl transition-all duration-300 border hover:shadow-md bg-white/80 border-white shadow-sm hover:-translate-y-0.5",
         className
       )}
       {...props}

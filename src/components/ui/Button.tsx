@@ -1,8 +1,9 @@
 "use client";
 
 import { cn } from "@/src/lib/utils";
-
-type ButtonVariant = "primary" | "secondary" | "danger" | "ghost";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+type ButtonVariant = "primary" | "secondary" | "danger" | "ghost" | "addTask";
 type ButtonSize = "sm" | "md";
 
 interface ButtonProps
@@ -22,12 +23,16 @@ const variantStyles: Record<ButtonVariant, string> = {
     "bg-red-100 hover:bg-red-200 text-red-800 font-medium",
   ghost:
     "bg-gray-100 text-gray-600 hover:bg-gray-200 font-medium transition-colors",
+  addTask:
+    "md:absolute relative md:right-2 md:top-2 md:bottom-2 bg-primary hover:bg-primary-hover disabled:bg-slate-300 disabled:transform-none text-white px-5 py-1 rounded-xl font-semibold transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-md flex items-center gap-2 cursor-pointer md:w-auto w-full flex items-center justify-center",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
   sm: "px-3 py-1.5 rounded text-sm",
   md: "px-4 py-2 rounded-lg text-sm",
 };
+
+const baseStyles = "cursor-pointer shrink-0 inline-flex items-center justify-center gap-1.5";
 
 export function Button({
   variant = "primary",
@@ -37,18 +42,20 @@ export function Button({
   type = "button",
   ...props
 }: ButtonProps) {
+  const isAddTask = variant === "addTask";
   return (
     <button
       type={type}
       className={cn(
-        "cursor-pointer shrink-0 inline-flex items-center justify-center gap-1.5",
+        !isAddTask && baseStyles,
         variantStyles[variant],
-        sizeStyles[size],
+        !isAddTask && sizeStyles[size],
         className
       )}
       {...props}
     >
       {children}
+      {isAddTask && <FontAwesomeIcon icon={faPlus} />}
     </button>
   );
 }

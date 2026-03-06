@@ -8,14 +8,14 @@ interface Props {
 }
 
 const filterLabels: Record<FilterType, string> = {
-  all: "All",
-  completed: "Completed",
-  pending: "Pending",
+  all: 'all',
+  completed: 'completed',
+  pending: 'pending'
 }
 
 export default function Filters({ filter, onFilterChange }: Props) {
   return (
-    <div className="flex gap-2 mb-5" role="tablist" aria-label="Filter tasks">
+    <div className="flex gap-2 mb-5 bg-slate-200/50 p-1.5 rounded-2xl md:w-fit w-full" role="tablist" aria-label="Filter tasks">
       {(["all", "completed", "pending"] as const).map((f) => (
         <Button
           key={f}
@@ -25,10 +25,10 @@ export default function Filters({ filter, onFilterChange }: Props) {
           variant="secondary"
           onClick={() => onFilterChange(f)}
           className={cn(
-            "border border-gray-300",
+            "md:px-6 px-4 md:py-2 py-1 rounded-xl font-medium text-sm transition-all duration-300 bg-transparent",
             filter === f
-              ? "bg-gray-200 text-gray-800"
-              : "text-gray-500 hover:text-gray-700 bg-transparent hover:bg-gray-100"
+              ? "bg-white text-primary transform scale-100"
+              : "text-primary hover:text-primary-hover hover:bg-white/40"
           )}
         >
           {filterLabels[f]}
