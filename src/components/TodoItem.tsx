@@ -18,7 +18,7 @@ export default function TodoItem({ todo, onToggle, onDelete }: Props) {
         todo.completed && "opacity-75"
       )}
     >
-      <div className="flex items-center gap-3 flex-1 w-full">
+      <div className="flex items-normal gap-3 flex-1 w-full">
         <button
           type="button"
           onClick={() => onToggle(todo.id, !todo.completed)}
@@ -50,7 +50,7 @@ export default function TodoItem({ todo, onToggle, onDelete }: Props) {
         <div className="min-w-0 flex-1">
           <p
             className={cn(
-              "text-lg font-medium transition-all duration-300",
+              "md:text-lg text-base font-medium transition-all duration-300",
               todo.completed
                 ? "line-through text-slate-400 opacity-70"
                 : "text-slate-800"
@@ -60,7 +60,7 @@ export default function TodoItem({ todo, onToggle, onDelete }: Props) {
           </p>
           <p
             className={cn(
-              "text-sm mt-0.5 transition-all duration-300",
+              "md:text-sm text-xs mt-0.5 transition-all duration-300",
               todo.completed ? "text-gray-400 opacity-70" : "text-gray-500"
             )}
           >
@@ -68,7 +68,7 @@ export default function TodoItem({ todo, onToggle, onDelete }: Props) {
           </p>
         </div>
       </div>
-      <div className="flex items-center gap-3 shrink-0">
+      <div className="flex items-center gap-3 shrink-0 md:w-auto w-full md:justify-start justify-end">
         <Badge variant={todo.completed ? "completed" : "pending"}>
           {todo.completed ? "Completed" : "Pending"}
         </Badge>

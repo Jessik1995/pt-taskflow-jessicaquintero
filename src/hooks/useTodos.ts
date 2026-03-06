@@ -60,14 +60,16 @@ export function useTodos() {
   }
 
   const toggleTodo = async (id: number, completed: boolean) => {
-    try {
-      const updated = await updateTodo(id, completed)
-      setTodos((prev) =>
-        prev.map((todo) => (todo.id === id ? { ...todo, ...updated } : todo))
+    setTodos((prev) =>
+      prev.map((todo) =>
+        todo.id === id ? { ...todo, completed } : todo
       )
+    )
+  
+    try {
+      await updateTodo(id, completed)
     } catch {
       setAddFeedback({ type: "error", message: "Could not update task." })
-      setTimeout(() => setAddFeedback(null), 3000)
     }
   }
 

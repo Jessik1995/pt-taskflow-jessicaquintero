@@ -35,11 +35,11 @@ export default function Home() {
   const totalPages = Math.max(1, Math.ceil(total / limit))
 
   return (
-    <main className="mx-auto p-10 md:p-40 md:py-20 min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-teal-50">
-      <section className="w-full bg-white/60 backdrop-blur-xl border border-white/50 shadow-2xl rounded-3xl overflow-hidden transition-all duration-300 p-8 pb-6">
+    <main className="mx-auto p-4 md:p-40 md:py-20 min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-teal-50">
+      <section className="w-full bg-white/60 backdrop-blur-xl border border-white/50 shadow-2xl rounded-3xl overflow-hidden transition-all duration-300 md:p-8 p-4 pb-6">
         <header className="mb-8">
           <div className="flex items-center gap-3 mb-1">
-            <div className="bg-gradient-to-tr from-primary to-primary-hover p-3 rounded-2xl shadow-lg shadow-indigo-200 text-white">
+            <div className="bg-gradient-to-tr from-primary to-primary-hover md:p-3 p-2 md:rounded-2xl rounded-md shadow-lg shadow-indigo-200 text-white">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="28"
@@ -50,7 +50,7 @@ export default function Home() {
                 strokeWidth="2.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="lucide lucide-list-todo"
+                className="lucide lucide-list-todo md:w-6 md:h-6 w-4 h-4"
                 aria-hidden="true"
               >
                 <rect x="3" y="5" width="6" height="6" rx="1"></rect>
@@ -60,7 +60,7 @@ export default function Home() {
                 <path d="M13 18h8"></path>
               </svg>
             </div>
-            <h1 className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary-hover">
+            <h1 className="md:text-3xl text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary-hover">
               TaskFlow
             </h1>
           </div>
